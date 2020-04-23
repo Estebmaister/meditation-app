@@ -100,6 +100,12 @@ video {
   z-index: -1;
 }
 
+.rrss {
+  position: absolute;
+  bottom: 1%;
+  right: 1%;
+}
+
 @media (max-aspect-ratio: 16/9) {
   .app {
     flex-direction: column;
