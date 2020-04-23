@@ -14,45 +14,48 @@ let fakeDuration = 600;
 
 outline.style.strokeDashoffset = outlineLength;
 outline.style.strokeDasharray = outlineLength;
-timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(
-  fakeDuration % 60
-)}`;
 
-sounds.forEach(sound => {
-  sound.addEventListener("click", function() {
+const padLeft = (value, length) =>
+  value.toString().length < length ? padLeft("0" + value, length) : value;
+
+const makeTimeDisplay = () =>
+  `${padLeft(Math.floor(fakeDuration / 60), 2)}:${padLeft(
+    Math.floor(fakeDuration % 60),
+    2
+  )}`;
+
+timeDisplay.textContent = makeTimeDisplay();
+
+sounds.forEach((sound) => {
+  sound.addEventListener("click", function () {
     song.src = this.getAttribute("data-sound");
     video.src = this.getAttribute("data-video");
     checkPlaying(song);
   });
 });
 
-play.addEventListener("click", function() {
+play.addEventListener("click", function () {
   checkPlaying(song);
 });
 
-replay.addEventListener("click", function() {
-    restartSong(song);
-    
-  });
+replay.addEventListener("click", function () {
+  restartSong(song);
+});
 
+const restartSong = (song) => {
+  let currentTime = song.currentTime;
+  song.currentTime = 0;
+  console.log("ciao");
+};
 
-const restartSong = song =>{
-    let currentTime = song.currentTime;
-    song.currentTime = 0;
-    console.log("ciao")
-
-}
-
-timeSelect.forEach(option => {
-  option.addEventListener("click", function() {
+timeSelect.forEach((option) => {
+  option.addEventListener("click", function () {
     fakeDuration = this.getAttribute("data-time");
-    timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(
-      fakeDuration % 60
-    )}`;
+    timeDisplay.textContent = makeTimeDisplay();
   });
 });
 
-const checkPlaying = song => {
+const checkPlaying = (song) => {
   if (song.paused) {
     song.play();
     video.play();
@@ -64,11 +67,11 @@ const checkPlaying = song => {
   }
 };
 
-song.ontimeupdate = function() {
+song.ontimeupdate = function () {
   let currentTime = song.currentTime;
   let elapsed = fakeDuration - currentTime;
-  let seconds = Math.floor(elapsed % 60);
-  let minutes = Math.floor(elapsed / 60);
+  let seconds = padLeft(Math.floor(elapsed % 60), 2);
+  let minutes = padLeft(Math.floor(elapsed / 60), 2);
   timeDisplay.textContent = `${minutes}:${seconds}`;
   let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
   outline.style.strokeDashoffset = progress;
