@@ -27,7 +27,7 @@ const makeTimeDisplay = () =>
 
 timeDisplay.textContent = makeTimeDisplay();
 
-// Play the sounds
+// Play the sounds with 'function' keyword to have 'this' attribute
 sounds.forEach((sound) => {
   sound.addEventListener("click", function () {
     song.src = this.getAttribute("data-sound");
@@ -41,16 +41,9 @@ play.addEventListener("click", function () {
 });
 
 // replay the actual sound and reset the duration
-replay.addEventListener("click", function () {
-  restartSong(song);
-});
+replay.addEventListener("click", () => (song.currentTime = 0));
 
-const restartSong = (song) => {
-  let currentTime = song.currentTime;
-  song.currentTime = 0;
-};
-
-// Selecting the time duration
+// Selecting the time duration with 'function' keyword to have 'this' attribute
 timeSelect.forEach((option) => {
   option.addEventListener("click", function () {
     fakeDuration = this.getAttribute("data-time");
@@ -72,7 +65,7 @@ const checkPlaying = (song) => {
 };
 
 // Make the animation of the circle and the time display
-song.ontimeupdate = function () {
+song.ontimeupdate = () => {
   let currentTime = song.currentTime;
   let elapsed = fakeDuration - currentTime;
   let seconds = padLeft(Math.floor(elapsed % 60), 2);
