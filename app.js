@@ -15,6 +15,7 @@ let fakeDuration = 600;
 outline.style.strokeDashoffset = outlineLength;
 outline.style.strokeDasharray = outlineLength;
 
+// Making the format of the output time display
 const padLeft = (value, length) =>
   value.toString().length < length ? padLeft("0" + value, length) : value;
 
@@ -26,6 +27,7 @@ const makeTimeDisplay = () =>
 
 timeDisplay.textContent = makeTimeDisplay();
 
+// Play the sounds
 sounds.forEach((sound) => {
   sound.addEventListener("click", function () {
     song.src = this.getAttribute("data-sound");
@@ -38,6 +40,7 @@ play.addEventListener("click", function () {
   checkPlaying(song);
 });
 
+// replay the actual sound and reset the duration
 replay.addEventListener("click", function () {
   restartSong(song);
 });
@@ -45,9 +48,9 @@ replay.addEventListener("click", function () {
 const restartSong = (song) => {
   let currentTime = song.currentTime;
   song.currentTime = 0;
-  console.log("ciao");
 };
 
+// Selecting the time duration
 timeSelect.forEach((option) => {
   option.addEventListener("click", function () {
     fakeDuration = this.getAttribute("data-time");
@@ -55,6 +58,7 @@ timeSelect.forEach((option) => {
   });
 });
 
+// Check if the song is playing or stopped
 const checkPlaying = (song) => {
   if (song.paused) {
     song.play();
@@ -67,6 +71,7 @@ const checkPlaying = (song) => {
   }
 };
 
+// Make the animation of the circle and the time display
 song.ontimeupdate = function () {
   let currentTime = song.currentTime;
   let elapsed = fakeDuration - currentTime;
