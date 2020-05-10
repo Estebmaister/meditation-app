@@ -4,6 +4,8 @@
 
 An app in pure `HTML`, `CSS` and `Vanilla js`, audio and video files edited with `js functions` and svg img edited in `css` with the instructions and guidance of [Dev Ed](https://developedbyed.com).
 
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F31OD9K)
+
 In this app you can select among time periods for a meditation session with relaxing music and stimulating videos.
 
 # Installation / Cloning
