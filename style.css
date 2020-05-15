@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-html,
 body {
   background-color: #555;
   z-index: -2;
