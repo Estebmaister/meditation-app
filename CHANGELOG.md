@@ -31,7 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Fix Markdown links to tag comparison URL with footnote-style links.
 
-## [0.0.7] - 2020-04-16
+## [0.1.0] - 2020-04-16
 
 ### Added
 
@@ -50,5 +50,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - `Security` in case of vulnerabilities.
 
 [unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/estebmaister/meditation/compare/v0.3.0...v1.0.0
-[0.0.7]: https://github.com/estebmaister/meditation/compare/v0.0.6...v0.0.7
+[1.0.0]: https://github.com/estebmaister/meditation/compare/v0.1.0...v1.0.0
+[0.1.0]: https://github.com/estebmaister/meditation/compare/v0.0.1...v0.1.0
